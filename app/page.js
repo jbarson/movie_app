@@ -1,51 +1,45 @@
-'use client';
 
 import styles from './page.module.css'
-import { useEffect, useState } from 'react'
-// import movies from './api/mock.js'
 import Image from 'next/image';
+import Link from 'next/link';
+import Header from './components/Header';
+
+async function getMovies() {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`,
+  {
+    next: {
+      revalidate: 3600
+    }
+  })
+
+  if (!res.ok) {
+    //TODO add better error handling
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
 
 
 
-export default function Home() {
-  const [movies, setMovies] = useState([])
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/popular?api_key=8f0e1c9f6c5e0a5a6a4d7e7e2d7b7f6c&language=en-US&page=1')
-      .then((response) => response.json())
-      .then((data) => setMovies(data))
+export default async function Home() {
 
-  }, [])
-
+  const movies = await getMovies();
 
   return (
     <main className={styles.main}>
-      <header className={styles.header}>
+      <Header>
         <h1 className='styles.title'>
           Pop Movies
         </h1>
-        <div
-          className={styles.menu} onClick={console.log}
-          aria-haspopup="true"
-          role="button"
-          id="mainMenuOptions"
-          aria-expanded="false"
-          aria-label="Menu"
-          tabIndex="0"
-        />
-      </header>
-      <div className='styles.grid'>
-        {/* {movies.results.map((movie) => (
-          <p key={movie.id}>
-            {movie.title}
-            <Image src="https://image.tmdb.org/t/p/w500/{movie.image}" alt={movie.title} width={500} height={500} />
-          </p>
-        ))} */}
-
-
-
-
+      </Header>
+      <div className={styles.grid}>
+        {movies.results.map((movie) => (
+          <Link className={styles.poster} href={`/movie/${movie.id}`} key={movie.id}>
+              <Image className={styles.img} key={movie.id} src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} width={185} height={277} />
+            </Link>
+        ))}
       </div>
-
     </main>
   )
 }
