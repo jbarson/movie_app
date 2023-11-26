@@ -1,3 +1,90 @@
 .main {
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
 }
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 64px;
+  color: #212121;
+}
+
+.title {
+  margin-left: 28px;
+}
+
+.title::before {
+  content: url("/arrow-left.svg");
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 14px;
+  top: 16px;
+}
+
+.movieTitle {
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+  flex-shrink: 0;
+  padding: 16px;
+  width: 100%;
+  background: #746A64;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }
+
+  .details {
+    padding: 24px;
+    line-height: 24px;
+  }
+
+  .imageWrapper {
+    display:flex;
+
+  }
+  .img {
+    width: 115px;
+    height: 172.5px;
+    border-radius: 2px;
+  }
+  .detailsRight {
+    padding-left: 16px;
+  }
+
+  .releaseDate {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 24px;
+  }
+  .runtime {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .rating {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 26px;
+  }
+
+  .favButton {
+    color: #ffffff;
+    width: 196px;
+    height: 56px;
+    margin-top: 16px;
+    border-radius: 2px;
+    background: #746A64;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }
+
+  .overview {
+    font-size: 14px;
+    font-weight: 500;
+    color: #757575;
+    margin-top: 24px;
+  }

@@ -33,7 +33,7 @@ export default async function Home() {
           Pop Movies
         </h1>
       </Header>
-      <div className={styles.grid}>
+      <div className={styles.content}>
         {movies.results.map((movie) => (
           <Link className={styles.poster} href={`/movie/${movie.id}`} key={movie.id}>
               <Image className={styles.img} key={movie.id} src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} width={185} height={277} />
