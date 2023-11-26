@@ -1,95 +1,51 @@
-import Image from 'next/image'
+'use client';
+
 import styles from './page.module.css'
+import { useEffect, useState } from 'react'
+// import movies from './api/mock.js'
+import Image from 'next/image';
+
+
 
 export default function Home() {
+  const [movies, setMovies] = useState([])
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=8f0e1c9f6c5e0a5a6a4d7e7e2d7b7f6c&language=en-US&page=1')
+      .then((response) => response.json())
+      .then((data) => setMovies(data))
+
+  }, [])
+
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      <header className={styles.header}>
+        <h1 className='styles.title'>
+          Pop Movies
+        </h1>
+        <div
+          className={styles.menu} onClick={console.log}
+          aria-haspopup="true"
+          role="button"
+          id="mainMenuOptions"
+          aria-expanded="false"
+          aria-label="Menu"
+          tabIndex="0"
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+      </header>
+      <div className='styles.grid'>
+        {/* {movies.results.map((movie) => (
+          <p key={movie.id}>
+            {movie.title}
+            <Image src="https://image.tmdb.org/t/p/w500/{movie.image}" alt={movie.title} width={500} height={500} />
           </p>
-        </a>
+        ))} */}
+
+
+
+
       </div>
+
     </main>
   )
 }
