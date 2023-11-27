@@ -23,3 +23,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Create a movie not found page and redirect to it when a movie is not found
 - Get guidance from client regarding the trailer component
 
+## Testing
+I have implemented cypress end to end testing for the application. To run the tests, run the following command:
+
+```bash
+npm run cypress:open
+
+```
