@@ -1,4 +1,4 @@
-Pop Movies
+# Pop Movies
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -24,7 +24,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Get guidance from client regarding the trailer component
 
 ## Testing
-I have implemented cypress end to end testing for the application. To run the tests, run the following command:
+I have stubbed a cypress end to end test for the application. To run the tests, run the following command:
 
 ```bash
 npm run cypress:open
