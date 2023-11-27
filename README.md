@@ -31,3 +31,9 @@ I have stubbed a cypress end to end test for the application. To run the tests, 
 npm run cypress:open
 
 ```
+## Environment variables
+
+You will need to put your api key in an `.env.local` like so
+```bash
+API_KEY=<the-key-goes-here>
+```
