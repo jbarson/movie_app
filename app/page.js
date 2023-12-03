@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from './components/Header';
 
 async function getMovies() {
+  console.log('running')
   const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`,
   {
     next: {

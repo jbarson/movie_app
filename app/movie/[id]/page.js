@@ -1,5 +1,6 @@
 import styles from '../page.module.css'
 import Header from '@/app/components/Header'
+import FavButton from '@/app/components/FavButton';
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -41,7 +42,8 @@ export default async function Movie({ params }) {
               <h3 className={styles.releaseDate}>{releaseDate}</h3>
               <p className={styles.runtime}>{movie.runtime} mins</p>
               <p className={styles.rating}>{rating}/10</p>
-              <button className={styles.favButton}>Add to Favourites</button>
+              {/* <button className={styles.favButton} onClick={console.log}>Add to Favourites</button> */}
+              <FavButton movie={movie}/>
             </div>
           </div>
           </section>
